@@ -1,18 +1,51 @@
 package com.example.mynote.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.mynote.datasource.UserDatasource;
+import com.example.mynote.model.Response;
 import com.example.mynote.model.User;
 
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return new User(id, "John Doe", "john.doe@example.com");
+    private UserDatasource userDatasource = new UserDatasource();
+
+    // @GetMapping("/{id}")
+    // public User getUserById(@PathVariable Long id) {
+    //     return new User(id, "John Doe", "john.doe@example.com");
+    // }
+
+    @PostMapping("/login")
+    public Response login(@RequestBody Map<String, String> param) {
+        String username = param.get("username");
+        String password = param.get("password");
+        User user = userDatasource.login(username, password);
+        if (user != null) {
+            return new Response("Login successful", user, 200);
+        } else {
+            return new Response("Invalid credentials", null, 401);
+        }
     }
+
+    @PostMapping("/register")
+    public Response register(@RequestBody Map<String, String> param) {
+        String username = param.get("username");
+        String email = param.get("email");
+        String password = param.get("password");
+        User user = new User(0, username, email, password);
+        boolean success = userDatasource.register(user);
+        if (success) {
+            return new Response("Registration successful", user, 200);
+        } else {
+            return new Response("Registration failed", null, 400);
+        }
+    }
+    
 }

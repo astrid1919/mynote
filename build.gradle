@@ -23,6 +23,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	// Embedded database for development / tests
 	implementation 'com.h2database:h2'
+	// Local MySQL connector provided in project plugin folder
+	// Path: plugin/mysql-connector-j-9.5.0.jar
+	runtimeOnly files('plugin/mysql-connector-j-9.5.0.jar')
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-session-jdbc-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
