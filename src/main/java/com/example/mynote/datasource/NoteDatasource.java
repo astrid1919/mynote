@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import com.example.mynote.model.Note;
 
 public class NoteDatasource {
-    private static final String URL = "jdbc:mysql://localhost:3306/mynoteDB";
+    private static final String URL = "jdbc:mysql://root:vuSzugqsRRoyVomJqRxPBfQqhAxvpQPY@ballast.proxy.rlwy.net:20988/railway";
     private Connection connection;
 
     public NoteDatasource() {
         try {
-            connection = DriverManager.getConnection(URL, "root", "123456789");
+            connection = DriverManager.getConnection(URL, "root", "vuSzugqsRRoyVomJqRxPBfQqhAxvpQPY");
         } catch (Exception e) {
             e.printStackTrace();
         }

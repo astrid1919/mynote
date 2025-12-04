@@ -7,13 +7,13 @@ import java.sql.Statement;
 import com.example.mynote.model.User;
 
 public class UserDatasource {
-    private static final String URL = "jdbc:mysql://localhost:3306/mynoteDB";
+    private static final String URL = "jdbc:mysql://root:vuSzugqsRRoyVomJqRxPBfQqhAxvpQPY@ballast.proxy.rlwy.net:20988/railway";
     private Connection connection;
 
 
     public UserDatasource() {
         try {
-            connection = DriverManager.getConnection(URL, "root", "123456789");
+            connection = DriverManager.getConnection(URL, "root", "vuSzugqsRRoyVomJqRxPBfQqhAxvpQPY");
         } catch (Exception e) {
             e.printStackTrace();
         }
