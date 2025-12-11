@@ -1,4 +1,4 @@
-package com.example.mynote.datasource;
+package com.example.mynote.repositories;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,12 +6,12 @@ import java.sql.Statement;
 
 import com.example.mynote.model.User;
 
-public class UserDatasource {
+public class UserRepository {
     private static final String URL = "jdbc:mysql://localhost:3306/mynoteDB";
     private Connection connection;
 
 
-    public UserDatasource() {
+    public UserRepository() {
         try {
             connection = DriverManager.getConnection(URL, "root", "123456789");
         } catch (Exception e) {
